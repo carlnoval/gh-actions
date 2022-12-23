@@ -1,0 +1,8 @@
+name: Hello World           # optional, good to have for readability in github
+run-name: Print Hello World # optional, also good to have for readability in github
+on: workflow_dispatch       # manual trigger
+jobs:
+  print-hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World from GitHub Actions"
