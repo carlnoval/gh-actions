@@ -1,7 +1,8 @@
-name: Hello World                       # optional, good to have for readability in github
-run-name: Print Hello World  # optional, also good to have for readability in github
-on:
-  workflow_dispatch:                    # manually trigger this job
+name: Hello World             # optional, good to have for readability in github
+run-name: Print Hello World   # optional, also good to have for readability in github
+
+on: workflow_dispatch         # manually trigger this job
+
 jobs:
   print-hello-world:
     runs-on: ubuntu-latest
