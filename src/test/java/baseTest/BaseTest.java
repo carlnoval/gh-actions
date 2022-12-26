@@ -24,12 +24,9 @@ public class BaseTest {
 
     // always executes before the class of the test
     @BeforeClass
-    public void webDriverInit() {
-        // trying OS
-        System.out.println("#############SYSTEM PROPERTIES \n" + System.getProperties());
-        
+    public void webDriverInit() {      
         String SELENIUM_KEY = "webdriver.chrome.driver";        // key that selenium will look for
-        String CHROME_DRIVER_PATH = "resources/chromedriver";   // chromedriver107 path from project root, chromedriver107.exe for windows
+        String CHROME_DRIVER_PATH = getChromeDriverPath();
         System.setProperty(SELENIUM_KEY, CHROME_DRIVER_PATH);   // System.setProperty allows the Selenium WebDriver framework to know which driver to use for automation
 
         driver = new ChromeDriver(getChromeOptions());          // instantiating a new webdriver with browser options, browser options is optional
@@ -76,5 +73,17 @@ public class BaseTest {
         //myOptions.setHeadless(true);
         myOptions.setExperimentalOption("excludeSwitches", List.of("enable-automation"));   // removes banner: "Chrome is being controlled by automated test software."
         return myOptions;
+    }
+
+    private String getChromeDriverPath() {
+        String chromeDriverPath;
+
+        switch(System.getProperty("os.name")) {
+            case "Mac OS X" -> { chromeDriverPath = "resources/chromedriver108M1"; }
+            case "Linux" -> { chromeDriverPath = "resources/chromedriver108Linux"; }
+            default -> { chromeDriverPath = "OS is not in scope, check os of machine and use appropriate driver"; }
+        }
+
+        return chromeDriverPath;
     }
 }
