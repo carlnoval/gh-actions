@@ -83,11 +83,8 @@ public class BaseTest {
 
     private ChromeOptions getLinuxGitHubActionChromeOptions() {
         ChromeOptions linuxGitHubActionChromeOptions = new ChromeOptions();
-        linuxGitHubActionChromeOptions.setExperimentalOption("excludeSwitches", List.of("enable-automation"));   // removes banner: "Chrome is being controlled by automated test software."
-        linuxGitHubActionChromeOptions.addArguments(
-            // "--no-sandbox",
-            "--headless"
-        );
+        linuxGitHubActionChromeOptions.setExperimentalOption("excludeSwitches", List.of("enable-automation"));  // removes banner: "Chrome is being controlled by automated test software."
+        linuxGitHubActionChromeOptions.addArguments("--headless");                                              // need to run headless on linux, otherwise need to setup Xvfb or X virtual framebuffer 
         return linuxGitHubActionChromeOptions;
     }
 
