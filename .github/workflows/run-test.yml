@@ -17,5 +17,4 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
       - name: Run Test
-        # run: mvn -B package --file pom.xml
         run: mvn test
