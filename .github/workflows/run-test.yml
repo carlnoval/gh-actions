@@ -4,11 +4,12 @@ run-name: Run TestNG Test   # optional, also good to have for readability in git
 on: workflow_dispatch       # manually trigger this job
 
 jobs:
-  run-e2e-test:
+  run-e2e-test:             # job name
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout the repo
+        uses: actions/checkout@v3
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
