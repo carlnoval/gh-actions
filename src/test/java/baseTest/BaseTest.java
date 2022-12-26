@@ -85,7 +85,7 @@ public class BaseTest {
         ChromeOptions linuxGitHubActionChromeOptions = new ChromeOptions();
         linuxGitHubActionChromeOptions.setExperimentalOption("excludeSwitches", List.of("enable-automation"));   // removes banner: "Chrome is being controlled by automated test software."
         linuxGitHubActionChromeOptions.addArguments(
-            "--no-sandbox",
+            // "--no-sandbox",
             "--headless"
         );
         return linuxGitHubActionChromeOptions;
