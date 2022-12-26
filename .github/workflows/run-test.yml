@@ -1,10 +1,10 @@
-name: TestNG Test           # optional, good to have for readability in github
-run-name: Run TestNG Test   # optional, also good to have for readability in github
+name: TestNG Test                   # optional, good to have for readability in github
+run-name: Run TestNG Test           # optional, also good to have for readability in github
 
-on: workflow_dispatch       # manually trigger this job
+on: workflow_dispatch               # manually trigger this job
 
 jobs:
-  run-e2e-test:             # job name
+  run-e2e-test:                     # job name
     runs-on: ubuntu-latest
 
     steps:
@@ -15,6 +15,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-          cache: 'maven'
-      - name: Run Test
+          cache: 'maven'            # reduce run time by only downloading new added dependencies on pom.xml
+      - name: Run EndToEnd Test
         run: mvn test
