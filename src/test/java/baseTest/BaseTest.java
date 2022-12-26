@@ -25,6 +25,9 @@ public class BaseTest {
     // always executes before the class of the test
     @BeforeClass
     public void webDriverInit() {
+        // trying OS
+        System.out.println("#############SYSTEM PROPERTIES \n" + System.getProperties());
+        
         String SELENIUM_KEY = "webdriver.chrome.driver";        // key that selenium will look for
         String CHROME_DRIVER_PATH = "resources/chromedriver";   // chromedriver107 path from project root, chromedriver107.exe for windows
         System.setProperty(SELENIUM_KEY, CHROME_DRIVER_PATH);   // System.setProperty allows the Selenium WebDriver framework to know which driver to use for automation
