@@ -26,7 +26,7 @@ public class BaseTest {
     @BeforeClass
     public void webDriverInit() {      
         String SELENIUM_KEY = "webdriver.chrome.driver";        // key that selenium will look for
-        String CHROME_DRIVER_PATH = getChromeDriverPath();
+        String CHROME_DRIVER_PATH = getChromeDriverPath();      // path for desired chromedriver
         System.setProperty(SELENIUM_KEY, CHROME_DRIVER_PATH);   // System.setProperty allows the Selenium WebDriver framework to know which driver to use for automation
 
         driver = new ChromeDriver(getChromeOptions());          // instantiating a new webdriver with browser options, browser options is optional
@@ -69,10 +69,33 @@ public class BaseTest {
     }
 
     private ChromeOptions getChromeOptions() {
-        ChromeOptions myOptions = new ChromeOptions();
+        ChromeOptions environmentOption;
+
+        switch(System.getProperty("os.name")) {
+            case "Mac OS X" -> { environmentOption = getMacLocalMachineChromeOptions(); }
+            case "Linux" -> { environmentOption = getLinuxGitHubActionChromeOptions(); }
+            // defaulting with headless if os.name is not in scope
+            default -> { environmentOption = getMacLocalMachineChromeOptions(); }
+        }
+
+        return environmentOption;
+    }
+
+    private ChromeOptions getLinuxGitHubActionChromeOptions() {
+        ChromeOptions linuxGitHubActionChromeOptions = new ChromeOptions();
+        linuxGitHubActionChromeOptions.setExperimentalOption("excludeSwitches", List.of("enable-automation"));   // removes banner: "Chrome is being controlled by automated test software."
+        linuxGitHubActionChromeOptions.addArguments(
+            "--no-sandbox",
+            "--headless"
+        );
+        return linuxGitHubActionChromeOptions;
+    }
+
+    private ChromeOptions getMacLocalMachineChromeOptions() {
+        ChromeOptions macLocalMachineChromeOptions = new ChromeOptions();
         //myOptions.setHeadless(true);
-        myOptions.setExperimentalOption("excludeSwitches", List.of("enable-automation"));   // removes banner: "Chrome is being controlled by automated test software."
-        return myOptions;
+        macLocalMachineChromeOptions.setExperimentalOption("excludeSwitches", List.of("enable-automation"));   // removes banner: "Chrome is being controlled by automated test software."
+        return macLocalMachineChromeOptions;
     }
 
     private String getChromeDriverPath() {
@@ -81,7 +104,7 @@ public class BaseTest {
         switch(System.getProperty("os.name")) {
             case "Mac OS X" -> { chromeDriverPath = "resources/chromedriver108M1"; }
             case "Linux" -> { chromeDriverPath = "resources/chromedriver108Linux"; }
-            default -> { chromeDriverPath = "OS is not in scope, check os of machine and use appropriate driver"; }
+            default -> { chromeDriverPath = "OS is not in scope for driver path, check OS of machine and use appropriate driver."; }
         }
 
         return chromeDriverPath;
