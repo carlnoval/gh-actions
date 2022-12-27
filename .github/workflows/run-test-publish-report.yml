@@ -25,4 +25,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: target/surefire-reports/index.html
-          publis_branch: master
+          publish_branch: master
