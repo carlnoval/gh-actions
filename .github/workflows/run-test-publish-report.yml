@@ -18,5 +18,10 @@ jobs:
           cache: 'maven'            # reduce run time by only downloading new added dependencies on pom.xml
       - name: Run EndToEnd Test
         run: mvn test
-      - name: Check the directory
-        run: ls target/surefire-reports 
+      - name: Confirm that index.html exists
+        run: ls target/surefire-reports
+      - name: Deploy to GithubPages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: target/surefire-reports
