@@ -19,4 +19,4 @@ jobs:
       - name: Run EndToEnd Test
         run: mvn test
       - name: Check the directory
-        run: ls
+        run: ls target/surefire-reports 
