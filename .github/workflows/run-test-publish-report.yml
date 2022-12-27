@@ -1,5 +1,5 @@
-name: TestNG Test                   # optional, good to have for readability in github
-run-name: Run TestNG Test           # optional, also good to have for readability in github
+name: Test and Reporting
+run-name: Run TestNG Test then publish report to GH Pages
 
 on: workflow_dispatch               # manually trigger this job
 
