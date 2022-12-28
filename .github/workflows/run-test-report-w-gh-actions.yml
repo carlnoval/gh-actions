@@ -3,6 +3,17 @@ run-name: Run TestNG Test then publish report to GH Pages
 
 on: workflow_dispatch               # manually trigger this job
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   run-e2e-test:                     # job name
     
