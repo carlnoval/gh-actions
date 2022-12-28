@@ -37,11 +37,22 @@ jobs:
         run: mvn test
       - name: Setup Pages
         uses: actions/configure-pages@v2
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: target/surefire-reports
+          destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-        with:
-          # Path to artifacts
-          path: 'target/surefire-reports'
+
+  # Deployment job
+  deploy-test-results:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
