@@ -42,6 +42,11 @@ jobs:
         with:
           # Path to artifacts
           path: target/surefire-reports
+
+  deploy-test-results:
+    runs-on: ubuntu-latest
+    needs: run-e2e-test
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
