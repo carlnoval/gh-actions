@@ -36,6 +36,8 @@ jobs:
       - name: Run EndToEnd Test
         run: mvn test
       - name: Setup Pages
+        # ensures that steps for publishing results to GitHub pages continues regardless if tests all succeeded or if there are test failures
+        if: success() || failure()
         uses: actions/configure-pages@v2
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
