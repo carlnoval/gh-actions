@@ -26,6 +26,7 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v3
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -33,21 +34,31 @@ jobs:
           distribution: 'adopt'
           # Cache dependencies from pom.xml, reduces run time by only downloading new dependencies
           cache: 'maven'
+
       - name: Run EndToEnd Test
         run: mvn test
+
       - name: Setup Pages
         # ensures that steps for publishing results to GitHub pages continues regardless if tests all succeeded or if there are test failures
         if: success() || failure()
         uses: actions/configure-pages@v2
+
       - name: Build with Jekyll
+        if: success() || failure()
         uses: actions/jekyll-build-pages@v1
         with:
           source: target/surefire-reports
           destination: ./_site
+
       - name: Upload artifact
+        if: success() || failure()
         uses: actions/upload-pages-artifact@v1
+
       - name: Deploy to GitHub Pages
+        if: success() || failure()
         id: deployment
         uses: actions/deploy-pages@v1
+
       - name: Display GH Pages URL / Reports Page
+        if: success() || failure()
         run: echo "https://carlnoval.github.io/gh-actions"
