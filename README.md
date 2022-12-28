@@ -1,19 +1,18 @@
-# Boiler Plate: TestNG project
+# Maven Project With TestNG
+## Related Google Docs Resource
+- [Link to gogole doc](https://docs.google.com/document/d/1T1NeAu3JGxUj5KiM3nIhn-nNIdOCBU5JJ-oURlpOXoM/edit)
 ## Requirements
 - Java LTS 17
-## What comes with this project
-- Basic boiler plat for a TestNG project
+- Maven with latest version should be fine
+## Project contains GitHub WorkFlows
+1. Basic Hello World
+2. Running the automation script
+3. Running the automation script then publishing surefire reports to GitHub pages via GitHub actions using
+    - Static HTML 
+    - Jekyll
+4. Running the automation script then publishing allure reports to GitHub pages via....
 ## Things to watch out for
-- Web Driver versions
+- Webdrivers
+  - Different OS requires different webdrivers
+  - Web Driver versions
 - POM (project object model) hell
-## When creating a new repo out of this boiler plate
-1. Delete the `.git` folder in root
-2. Update project folder's name
-3. Update artifactId in `pom.xml`
-   - Using the same name as the project folder would be nice
-## Does not come with any of the following
-- reporting
-- github actions
-- testng.xml file
-- dockerization
-- selenium grid
