@@ -3,7 +3,7 @@
 <suite name="Simple Test Suite">
     <test name="Test Classes in parallel" thread-count="3" parallel="classes">
         <classes>
-            <class name="failingTest.FailingTest"> </class>
+            <!-- <class name="failingTest.FailingTest"> </class> -->
             <class name="keyPresses.KeyPressesTest"> </class>
             <class name="login.LoginTest"> </class>
         </classes>
