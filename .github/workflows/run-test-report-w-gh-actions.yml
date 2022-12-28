@@ -1,5 +1,5 @@
-name: Test + Report + GH Actions
-run-name: Run TestNG Test then publish report to GH Pages
+name: Test then publish Reports to GH Pages
+run-name: Test then publish Reports to GH Pages
 
 on:
   # This job can only be triggered manually
