@@ -1,11 +1,13 @@
 name: Test + Report + GH Actions
 run-name: Run TestNG Test then publish report to GH Pages
 
-on: workflow_dispatch               # manually trigger this job
+on:
+  # This job can only be triggered manually
+  workflow_dispatch
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  # contents: read
+  contents: read
   pages: write
   id-token: write
 
@@ -15,7 +17,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  run-e2e-test:                     # job name
+  # Job Name
+  run-e2e-test:
     
     runs-on: ubuntu-latest
 
@@ -27,7 +30,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-          cache: 'maven'            # reduce run time by only downloading new added dependencies on pom.xml
+          # Cache dependencies from pom.xml, reduces run time by only downloading new dependencies
+          cache: 'maven'
       - name: Run EndToEnd Test
         run: mvn test
       - name: Setup Pages
