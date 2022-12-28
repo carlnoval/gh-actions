@@ -40,6 +40,7 @@ jobs:
 
       - name: Setup Pages
         # ensures that steps for publishing results to GitHub pages continues regardless if tests all succeeded or if there are test failures
+        # using this marks the workflow as failed if there are test failures
         if: success() || failure()
         uses: actions/configure-pages@v2
 
