@@ -44,3 +44,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+      - name: Display GH Pages URL / Reports Page
+        run: echo "https://carlnoval.github.io/gh-actions"
