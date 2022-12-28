@@ -20,6 +20,7 @@ jobs:
   # Job Name
   run-e2e-test:
     
+    # Runner will run with this OS
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload artifact that was produced earlier
+          # Path to artifacts
           path: 'target/surefire-reports'
       - name: Deploy to GitHub Pages
         id: deployment
