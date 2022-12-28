@@ -34,15 +34,13 @@ jobs:
           cache: 'maven'            # reduce run time by only downloading new added dependencies on pom.xml
       - name: Run EndToEnd Test
         run: mvn test
-      - name: Produce artifact
-        run: tar -cvzf github-pages.tar.gz target/surefire-reports
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload artifact that was produced earlier
-          path: 'github-pages.tar.gz'
+          path: 'target/surefire-reports'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
