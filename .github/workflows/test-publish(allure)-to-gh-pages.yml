@@ -38,12 +38,26 @@ jobs:
       - name: Run EndToEnd Test
         run: mvn test
 
+      - name: Check working directory
+        run: pwd
+
+      - name: Check directories
+        run: ls
+
       - name: Get Allure history
         uses: actions/checkout@v3
         if: success() || failure()
         with:
+          # Branch to checkout
           ref: gh-pages
+          # Relative path under $GITHUB_WORKSPACE to place the repository
           path: gh-pages
+        
+      - name: Check working directory
+        run: pwd
+
+      - name: Check directories
+        run: ls
 
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
