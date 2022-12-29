@@ -60,6 +60,16 @@ jobs:
         if: success() || failure()
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
+
+      - name: Post the link to the report
+        if: success() || failure()
+        uses: Sibz/github-status-action@v1
+        with: 
+            authToken: ${{secrets.GITHUB_TOKEN}}
+            context: 'Test report'
+            state: 'success'
+            sha: ${{ github.event.pull_request.head.sha }}
+            target_url: carlnoval.github.io/gh-actions/${{ github.run_number }}
