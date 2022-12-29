@@ -49,7 +49,7 @@ jobs:
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
         if: success() || failure()
-        # id: allure-report
+        id: allure-report
         with:
           allure_results: allure-results
           gh_pages: test-report
@@ -60,7 +60,7 @@ jobs:
       - name: Deploy report to Github Pages
         if: success() || failure()
         uses: peaceiris/actions-gh-pages@v3
-        env:
+        with:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: test-report
           PUBLISH_DIR: allure-history
