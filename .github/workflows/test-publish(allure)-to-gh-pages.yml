@@ -40,7 +40,7 @@ jobs:
 
       - name: Get Allure history
         uses: actions/checkout@v3
-        if: success() || failure()
+        # if: success() || failure()
         continue-on-error: true
         with:
           ref: gh-pages
@@ -48,7 +48,7 @@ jobs:
 
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
-        if: success() || failure()
+        # if: success() || failure()
         id: allure-report
         with:
           allure_results: allure-results
@@ -58,7 +58,7 @@ jobs:
           keep_reports: 5
 
       - name: Deploy report to Github Pages
-        if: success() || failure()
+        # if: success() || failure()
         uses: peaceiris/actions-gh-pages@v3
         with:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
