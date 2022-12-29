@@ -1,5 +1,5 @@
-name: Jekyll - Test then publish Reports to GH Pages
-run-name: Jekyll - Test then publish Reports to GH Pages
+name: Continue on error
+run-name: Continue on error
 
 on:
   # This job can only be triggered manually
