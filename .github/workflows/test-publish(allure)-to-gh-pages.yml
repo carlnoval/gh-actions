@@ -1,7 +1,8 @@
-name: Hello World             # optional, good to have for readability in github
-run-name: Print Hello World   # optional, also good to have for readability in github
+name: Test and Publish Allure Reports to GHPages
+run-name: Test and Publish Allure Reports to GHPages
 
-on: workflow_dispatch         # manually trigger this job
+on:
+  workflow_dispatch
 
 jobs:
   print-hello-world:
