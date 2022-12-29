@@ -53,6 +53,7 @@ jobs:
           # Branch to checkout
           ref: gh-pages
           # Relative path under $GITHUB_WORKSPACE to place the repository
+          # pwd: /home/runner/work/gh-actions/gh-actions
           path: gh-pages
         
       - name: Check working directory
@@ -62,6 +63,10 @@ jobs:
       - name: Check directories
         if: always()
         run: ls
+
+      - name: Check directories
+        if: always()
+        run: ls gh-pages
 
       - name: Allure Report action from marketplace
         uses: simple-elf/allure-report-action@master
