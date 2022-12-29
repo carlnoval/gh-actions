@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Thu Dec 29 08:54:55 GMT 2022","Thu Dec 29 08:54:55 GMT 2022","49","Simple Test Suite","Test Classes in parallel","failingTest.FailingTest","failingTest.FailingTest","failingTest","failingTest",""
+"passed","Thu Dec 29 08:54:55 GMT 2022","Thu Dec 29 08:54:56 GMT 2022","493","Simple Test Suite","Test Classes in parallel","keyPresses.KeyPressesTest","keyPresses.KeyPressesTest","keyPressesTest","keyPressesTest",""
+"passed","Thu Dec 29 08:54:55 GMT 2022","Thu Dec 29 08:54:56 GMT 2022","864","Simple Test Suite","Test Classes in parallel","login.LoginTest","login.LoginTest","successfulLoginTest","successfulLoginTest",""
