@@ -39,9 +39,11 @@ jobs:
         run: mvn test
 
       - name: Check working directory
+        if: always()
         run: pwd
 
       - name: Check directories
+        if: always()
         run: ls
 
       - name: Get Allure history
@@ -54,9 +56,11 @@ jobs:
           path: gh-pages
         
       - name: Check working directory
+        if: always()
         run: pwd
 
       - name: Check directories
+        if: always()
         run: ls
 
       - name: Allure Report action from marketplace
