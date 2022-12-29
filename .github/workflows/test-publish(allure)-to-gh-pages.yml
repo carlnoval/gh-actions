@@ -24,14 +24,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: check files before checking out anything
-        run: ls
 
       - name: Checkout master branch of the repo
         uses: actions/checkout@v3
-
-      - name: check files after checking out master branch
-        run: ls
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -48,13 +43,13 @@ jobs:
         uses: actions/checkout@v3
         if: success() || failure()
         with:
-          # Branch to checkout
+          # The repo branch to checkout
           ref: gh-pages
           # Relative path under $GITHUB_WORKSPACE to place the repository branch that was checked out
-          # pwd: /home/runner/work/gh-actions/gh-actions
+          # $GITHUB_WORKSPACE is the default working directory on the runner for steps: /home/runner/work/gh-actions/gh-actions
           path: gh-pages
 
-      - name: Allure Report action from marketplace
+      - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
         if: success() || failure()
         id: allure-report
@@ -65,6 +60,7 @@ jobs:
           allure_history: allure-history
           keep_reports: 20
 
+      # Note that after this workflow, `pages-build-deployment` workflow controlled by GitHub still has to complete before latest reports are published to GitHub Pages
       - name: Deploy report to Github Pages
         if: success() || failure()
         uses: peaceiris/actions-gh-pages@v3
@@ -73,6 +69,6 @@ jobs:
           publish_branch: gh-pages
           publish_dir: allure-history
 
-      - name: Lates Report URL
+      - name: Latest Report URL
         if: success() || failure()
         run: echo https://carlnoval.github.io/gh-actions/${{ github.run_number }}
